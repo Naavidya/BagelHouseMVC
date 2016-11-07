@@ -4,82 +4,78 @@ import java.awt.event.*;
 import java.text.DecimalFormat;
 
 /**
-   The OrderCalculatorGUI class creates the GUI for the
-   Brandi's Bagel House application.
-*/
+ * The OrderCalculatorGUI class creates the GUI for the Brandi's Bagel House
+ * application.
+ */
 
-public class mainMenu extends JFrame
-{
-   private BagelPanelView bagels;     // Bagel panel
-   private ToppingPanelView toppings; // Topping panel
-   private CoffeePanelView coffee;    // Coffee panel
-   private GreetingPanel banner;  // To display a greeting
-   private JPanel buttonPanel;    // To hold the buttons
-   private JButton calcButton;    // To calculate the cost
-   private JButton exitButton;    // To exit the application
-   
-   private Controller control;
+public class mainMenu extends JFrame {
+	private BagelPanelView bagels; // Bagel panel
+	private ToppingPanelView toppings; // Topping panel
+	private CoffeePanelView coffee; // Coffee panel
+	private GreetingPanel banner; // To display a greeting
+	private JPanel buttonPanel; // To hold the buttons
+	private JButton calcButton; // To calculate the cost
+	private JButton exitButton; // To exit the application
 
-   /**
-      Constructor
-   */
+	private Controller control;
 
-   public mainMenu()
-   {
-	   control = new Controller();
-      // Display a title.
-      setTitle("Order Calculator");
+	/**
+	 * Constructor
+	 */
 
-      // Specify an action for the close button.
-      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public mainMenu() {
+		control = new Controller();
+		// Display a title.
+		setTitle("Order Calculator");
 
-      // Create a BorderLayout manager.
-      setLayout(new BorderLayout());
+		// Specify an action for the close button.
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-      // Create the custom panels.
-      banner = new GreetingPanel();
-      bagels = new BagelPanelView();
-      toppings = new ToppingPanelView();
-      coffee = new CoffeePanelView();
+		// Create a BorderLayout manager.
+		setLayout(new BorderLayout());
 
-      // Create the button panel.
-      buildButtonPanel();
+		// Create the custom panels.
+		banner = new GreetingPanel();
+		bagels = new BagelPanelView();
+		toppings = new ToppingPanelView();
+		coffee = new CoffeePanelView();
 
-      // Add the components to the content pane.
-      add(banner, BorderLayout.NORTH);
-      add(bagels, BorderLayout.WEST);
-      add(toppings, BorderLayout.CENTER);
-      add(coffee, BorderLayout.EAST);
-      add(buttonPanel, BorderLayout.SOUTH);
-      
+		// Create the button panel.
+		buildButtonPanel();
 
-      // Pack the contents of the window and display it.
-      pack();
-      setVisible(true);
-   }
+		// Add the components to the content pane.
+		add(banner, BorderLayout.NORTH);
+		add(bagels, BorderLayout.WEST);
+		add(toppings, BorderLayout.CENTER);
+		add(coffee, BorderLayout.EAST);
+		add(buttonPanel, BorderLayout.SOUTH);
 
-   /**
-      The buildButtonPanel method builds the button panel.
-   */
+		// Pack the contents of the window and display it.
+		pack();
+		setVisible(true);
+	}
 
-   private void buildButtonPanel()
-   {
-      // Create a panel for the buttons.
-      buttonPanel = new JPanel();
+	/**
+	 * The buildButtonPanel method builds the button panel.
+	 */
 
-      // Create the buttons.
-      calcButton = new JButton("Calculate");
-      exitButton = new JButton("Exit");
+	private void buildButtonPanel() {
+		// Create a panel for the buttons.
+		buttonPanel = new JPanel();
 
-      // Register the action listeners.
-      calcButton.addActionListener(control.CBL);
-      exitButton.addActionListener(control.EBL);
+		// Create the buttons.
+		calcButton = new JButton("Calculate");
+		exitButton = new JButton("Exit");
 
-      // Add the buttons to the button panel.
-      buttonPanel.add(calcButton);
-      buttonPanel.add(exitButton);
-   }
-   
-// Listeners implemented in the Controller class
-   
+		// Register the action listeners.
+		calcButton.addActionListener(control.calc);
+		exitButton.addActionListener(control.exit);
+
+		// Add the buttons to the button panel.
+		buttonPanel.add(calcButton);
+		buttonPanel.add(exitButton);
+	}
+
+	// Listeners implemented in the Controller class
+
 }
